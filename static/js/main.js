@@ -2,32 +2,25 @@ console.log("Connection!");
 
 let socket = io( 'http://localhost:8080');
 
-$('.green').on('click', function(){
-    let color = green;
-    //socket.emit("color");
+$('.green').on('click', function(event){
+    event.preventDefault();
+    let color = "green";
     socket.emit("color", color);
 });
 
-$('.blue').on('click', function(){
-    let color = blue;
-    //socket.emit("blue");
+$('.blue').on('click', function(event){
+    event.preventDefault();
+    let color = "blue";
     socket.emit("color", color);
 });
 
-$('.pink').on('click', function(){
-    let color = pink;
-    //socket.emit("pink");
+$('.pink').on('click', function(event){
+    event.preventDefault();
+    let color = "pink";
     socket.emit("color", color);
 });
 
 socket.on("listenAll", function(color){
-    $("body").css("background-color", color);
-});
-
-socket.on("be_blue", function(){
-    $("body").css("background-color", "blue");
-});
-
-socket.on("be_pink", function(){
-    $("body").css("background-color", "pink");
+    var main = document.querySelector(".main");
+    main.style.backgroundColor = color;
 });
